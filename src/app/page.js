@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen dark:bg-zinc-900 text-black">
       <div className="flex flex-col items-center justify-center min-h-screen ">
-            <h1 className="text-4xl font-semibold mb-8 text-white p-10">Nos produits tendance</h1>
+            <h1 className="text-4xl font-semibold text-white p-8">Nos produits tendance</h1>
             <Carousel plants={plants} />
         </div>
       <Link href="/products" className="hover:underline mt-5">Voir nos produits</Link>
