@@ -2,6 +2,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Carousel from "./components/carousel/Carousel";
+import { cinzel } from "@/font";
+import Section1 from "./components/section1/Section1";
+// import Section2 from "./components/section2/Section2";
 
 const Home = () => {
   const [plants, setPlants] = useState([]);
@@ -19,13 +22,13 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen dark:bg-zinc-900 text-black">
+    <div className="flex flex-col items-center justify-center min-h-screen dark:bg-white text-black">
       <div className="flex flex-col items-center justify-center min-h-screen ">
-            <h1 className="text-4xl font-semibold text-white p-8">Nos produits tendance</h1>
+            <h1 className= {`${cinzel.className} antialised  text-4xl font-semibold text-black mt-20`}>Les incontournables</h1>
             <Carousel plants={plants} />
-        </div>
-      <Link href="/products" className="hover:underline mt-5">Voir nos produits</Link>
-      <Link href="/contact" className="hover:underline mt-2">Contactez-nous</Link>
+      </div>
+      <Section1/>
+     
     </div>
   );
 };
