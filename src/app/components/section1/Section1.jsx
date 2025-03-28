@@ -4,6 +4,7 @@ import { cinzel } from "@/font";
 import { IoPricetagsOutline } from "react-icons/io5";
 import { serif } from "@/font";
 import { RiPlantLine } from "react-icons/ri";
+import "./Section1.sass"
 
 function Section1() {
 
@@ -65,11 +66,11 @@ function Section1() {
                 className="w-full h-auto max-h-60 object-cover rounded-sm mb-2 "
               />
 
-              <div className="text-[rgb(67, 89, 70)]">
+              <div className="">
                 <h2 className={`${serif.className} antialiased text-2xl font-semibold text-center p-5`}>
                   {item.name}
                 </h2>
-                <div className="flex items-center gap-1 p-1 font-bold">
+                <div className="pill flex items-center gap-1 p-1 font-bold">
                   <p>La Green Trend</p>
                   <RiPlantLine className="text-2xl mb-1" />
                 </div>

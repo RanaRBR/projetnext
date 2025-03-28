@@ -49,7 +49,7 @@ const Carousel = () => {
             <div className="flex transition-transform ease-in-out duration-500" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 {data.map((item, index) => (
                     <div key={index} className="w-full flex-shrink-0 flex flex-col items-center justify-center">
-                        <img src={item.image} alt={`image-${index}`} className="rounded-lg w-[500px] h-[400px] object-cover " />
+                        <img src={item.image} alt={`image-${index}`} className="rounded-md w-[500px] h-[400px] object-cover " />
                         <div className="text-center mt-4 text-black">
                             <h2 className= {`${serif.className} antialised text-2xl font-semibold`}>{item.name}</h2>
                             <p className= {`${serif.className} antialised text-base p-2`}>{item.description}</p>

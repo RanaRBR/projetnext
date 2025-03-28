@@ -4,7 +4,7 @@ import Link from "next/link";
 import Carousel from "./components/carousel/Carousel";
 import { cinzel } from "@/font";
 import Section1 from "./components/section1/Section1";
-// import Section2 from "./components/section2/Section2";
+import Section2 from "./components/section2/Section2";
 
 const Home = () => {
   const [plants, setPlants] = useState([]);
@@ -28,6 +28,7 @@ const Home = () => {
             <Carousel plants={plants} />
       </div>
       <Section1/>
+      <Section2 />
      
     </div>
   );
