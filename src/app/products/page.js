@@ -1,6 +1,6 @@
 
 const Produits = () => {
-    return <h1 className="text-center text-2xl mt-4">Liste des Produits</h1>;
+    return <h1 className="text-center text-2xl mt-4"></h1>;
   };
   
   export default Produits;

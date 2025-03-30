@@ -39,7 +39,7 @@ const Section2 = () => {
         Idées de cadeaux...
       </h1>
 
-      <div className="grid grid-cols-2 gap-4 max-w-5xl">
+      <div className="grid grid-cols-2 gap-4 max-w-5xl pb-20">
         <div className="col-span-1 row-span-2 relative">
           <img src={data[0].image} alt={data[0].name} className="rounded-sm w-full h-full object-cover" />
           <div className="absolute left-5 top-7 transform -translate-y-1/2 bg-yellow-400 text-white rounded-full px-3 py-3 
