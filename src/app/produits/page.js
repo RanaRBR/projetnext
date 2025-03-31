@@ -3,14 +3,15 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { cinzel } from "@/font";
 import Searchbar from "../components/searchBar/SearchBar";
+import { TiArrowSortedDown } from "react-icons/ti";
 
 export default function Produits() {
   const [plants, setPlants] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [priceSort, setPriceSort] = useState(""); // pour trier par prix
-  const [categoryFilter, setCategoryFilter] = useState(""); // pour filtrer par catégorie
+  const [priceSort, setPriceSort] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -31,10 +32,9 @@ export default function Produits() {
       });
   }, []);
 
-  if (loading) return <p className="text-center text-gray-500">Chargement des plantes...</p>;
+  if (loading) return <p className="text-center text-gray-500">Chargement...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
-  // Filtrer les plantes par nom
   const filteredPlants = plants
     .filter((plant) => plant.name.toLowerCase().includes(searchTerm.toLowerCase()))
     .filter((plant) => (categoryFilter ? plant.category.toLowerCase().includes(categoryFilter.toLowerCase()) : true));
@@ -51,38 +51,45 @@ export default function Produits() {
   return (
     <div>
       <div className="container mx-auto p-15 bg-white">
-        <h1 className={`${cinzel.className} text-4xl font-semibold text-black p-8 text-center`}>
-          Nos Plantes
-        </h1>
+        <h1 className={`${cinzel.className} text-4xl font-semibold text-black p-8 text-center`}>Nos Plantes</h1>
+
         <Searchbar search={setSearchTerm} />
 
-
         <div className="flex justify-end items-center p-5">
-
           <div className="flex gap-4">
-            <select
-              value={priceSort}
-              onChange={(e) => setPriceSort(e.target.value)}
-              className="border-2 border-gray-300  focus:border-yellow-400 
-                 focus:ring-yellow-300 p-2 rounded-md "
-            >
-              <option value="">Trier par prix</option>
-              <option value="asc">Prix croissant</option>
-              <option value="desc">Prix décroissant</option>
-            </select>
+            <div className="relative ">
+              <select
+                value={priceSort}
+                onChange={(e) => setPriceSort(e.target.value)}
+                className="w-full px-4 py-2 border-2 border-gray-300  focus:border-yellow-400 
+           focus:ring-1 focus:ring-yellow-300 transition duration-200 
+           rounded-sm shadow-sm text-gray-700 placeholder-gray-400 
+           appearance-none outline-none"
+              >
+                <option value="">Prix</option>
+                <option value="asc">Prix croissant</option>
+                <option value="desc">Prix décroissant</option>
+              </select>
+              <TiArrowSortedDown className="absolute right-2 top-2 text-2xl cursor-pointer text-yellow-500" />
+            </div>
 
-            <select
-              value={categoryFilter}
-              onChange={(e) => setCategoryFilter(e.target.value)}
-              className="border-2 border-gray-300  focus:border-yellow-400 
-                 focus:ring-yellow-300 p-2 rounded-md"
-            >
-              <option value="">Filtrer par catégorie</option>
-              <option value="plante d'intérieur">Plante d'intérieur</option>
-              <option value="plante d'extérieur">Plante d'extérieur</option>
-              <option value="cactus">Cactus</option>
-              <option value="succulente">Succulente</option>
-            </select>
+            <div className="relative">
+              <select
+                value={categoryFilter}
+                onChange={(e) => setCategoryFilter(e.target.value)}
+                className="w-full px-4 py-2 border-2 border-gray-300  focus:border-yellow-400 
+           focus:ring-1 focus:ring-yellow-300 transition duration-200 
+           rounded-sm shadow-sm text-gray-700 placeholder-gray-400 
+           appearance-none outline-none"
+              >
+                <option value="">Catégorie</option>
+                <option value="plante d'intérieur">Plante d'intérieur</option>
+                <option value="plante d'extérieur">Plante d'extérieur</option>
+                <option value="cactus">Cactus</option>
+                <option value="succulente">Succulente</option>
+              </select>
+              <TiArrowSortedDown className="absolute right-2 top-2 text-yellow-500 text-2xl cursor-pointer " />
+            </div>
           </div>
         </div>
 

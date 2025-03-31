@@ -24,6 +24,7 @@ export default function Details() {
           setError("Plante non trouvée");
         }
         setLoading(false);
+        
       })
       .catch((error) => {
         console.error("Erreur :", error);
