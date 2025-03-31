@@ -40,7 +40,7 @@ const Section2 = () => {
       </h1>
 
       <div className="grid grid-cols-2 gap-4 max-w-5xl pb-20">
-        <div className="col-span-1 row-span-2 relative">
+        <div className="col-span-1 row-span-2 relative shadow-md shadow-black ">
           <img src={data[0].image} alt={data[0].name} className="rounded-sm w-full h-full object-cover" />
           <div className="absolute left-5 top-7 transform -translate-y-1/2 bg-yellow-400 text-white rounded-full px-3 py-3 
               transition duration-300 ease-in-out hover:scale-105 hover:bg-yellow-600 hover:shadow-lg">
@@ -50,7 +50,7 @@ const Section2 = () => {
 
         <div className="col-span-1 grid grid-cols-2 gap-4">
           {data.slice(1, 3).map((plant, index) => (
-            <div key={index} className="relative">
+            <div key={index} className="relative shadow-md shadow-black">
               <img src={plant.image} alt={plant.name} className="rounded-sm w-full h-40 object-cover" />
               <div className="absolute left-5 top-7 transform -translate-y-1/2 bg-yellow-400 text-white rounded-full px-3 py-3 
                   transition duration-300 ease-in-out hover:scale-105 hover:bg-yellow-600 hover:shadow-lg">
@@ -60,7 +60,7 @@ const Section2 = () => {
           ))}
         </div>
 
-        <div className="col-span-1 relative">
+        <div className="col-span-1 relative shadow-md shadow-black">
           <img src={data[3].image} alt={data[3].name} className="rounded-sm w-full h-56 object-cover" />
           <div className="absolute left-5 top-7 transform -translate-y-1/2 bg-yellow-400 text-white rounded-full px-3 py-3 
               transition duration-300 ease-in-out hover:scale-105 hover:bg-yellow-600 hover:shadow-lg">

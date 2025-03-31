@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from 'react';
 import Image from 'next/image';
 import { cinzel } from "@/font";
@@ -25,11 +25,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="container  bg-white text-black max-w-full flex flex-col items-center">
-      <h1 className={`${cinzel.className} antialiased text-4xl font-semibold text-black mt-20`}
-      >Contactez-nous</h1>
-      
-      <div className="contact-form mt-10 px-4 flex flex-col items-center w-full max-w-lg h-auto p-8">
+    <div className="container bg-white text-black max-w-full flex flex-col items-center">
+      <h1 className={`${cinzel.className} antialiased text-4xl font-semibold text-black mt-20`}>
+        Contactez-nous
+      </h1>
+
+      <div className="contact-form mt-10 px-4 flex flex-col items-center w-full max-w-lg h-auto p-8 ">
         <form onSubmit={handleSubmit} className="w-full max-w-lg bg-gray-100 p-6 rounded-lg shadow-lg">
           <div className="mb-4">
             <label htmlFor="name" className="block text-lg font-semibold">Nom</label>
@@ -39,7 +40,7 @@ const Contact = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full p-3 mt-2 border border-gray-300 rounded-md"
+              className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:border-yellow-600"
               placeholder="Votre nom"
               required
             />
@@ -53,7 +54,7 @@ const Contact = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-3 mt-2 border border-gray-300 rounded-md"
+              className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:border-yellow-600"
               placeholder="Votre email"
               required
             />
@@ -66,7 +67,7 @@ const Contact = () => {
               name="message"
               value={formData.message}
               onChange={handleChange}
-              className="w-full p-3 mt-2 border border-gray-300 rounded-md"
+              className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:border-yellow-600"
               placeholder="Votre message"
               rows="4"
               required
@@ -75,7 +76,7 @@ const Contact = () => {
 
           <button
             type="submit"
-            className="w-full text-white p-3 rounded-md hover:bg-yellow-600 transition duration-200 bg-yellow-500"
+            className="w-full text-black p-3 rounded-md hover:bg-yellow-600 transition duration-200 bg-yellow-500"
           >
             Envoyer
           </button>

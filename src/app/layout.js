@@ -1,7 +1,7 @@
-import './globals.css';
 import { ThemeProvider } from '../context/ThemeContext';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
+import './globals.css';
 
 export const metadata = {
   title: 'Green Store',
@@ -11,22 +11,16 @@ export const metadata = {
   },
 };
 
-const RootLayout = ({ children }) => {
+export default function RootLayout({ children }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
-      <body className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300">
-        <Navbar />
-        {children}
-        <Footer />
+    <html lang="fr" suppressHydrationWarning={true}>
+      <body className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300"  cz-shortcut-listen="true" > 
+        <ThemeProvider> 
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
-  );
-};
-
-export default function App({ children }) {
-  return (
-    <ThemeProvider>
-      <RootLayout>{children}</RootLayout>
-    </ThemeProvider>
   );
 }
