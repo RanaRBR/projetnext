@@ -1,225 +1,3 @@
-// "use client";
-// import { useEffect, useState } from "react";
-// import { cinzel } from "@/font";
-// // import Panier from "../panier/Panier";
-
-// export default function Produits() {
-//   const [plants, setPlants] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [panier, setPanier] = useState([]);
-//   const [isMounted, setIsMounted] = useState(false);
-//   const [error, setError] = useState(null);
-
-//   useEffect(() => {
-//     setIsMounted(true);
-//   }, []);
-
-//   useEffect(() => {
-//     fetch("https://ranarbr.github.io/apiPlants/data.json")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         if (data && data.plants) {
-//           setPlants(data.plants);
-//           setLoading(false);
-//         } else {
-//           throw new Error("Structure de données inattendue");
-//         }
-//       })
-//       .catch((error) => {
-//         console.error("Erreur de chargement :", error);
-//         setError(
-//           "Il y a eu un problème avec le chargement des plantes. Veuillez réessayer."
-//         );
-//         setLoading(false);
-//       });
-//   }, []);
-
-//   const ajouterAuPanier = (plant, taille) => {
-//     const prix =
-//       taille === "Petite" ? plant.prices.Petite : plant.prices.Grande;
-//     const existe = panier.find(
-//       (item) => item.id === plant.id && item.taille === taille
-//     );
-
-//     setPanier((prevPanier) => {
-//       if (existe) {
-//         return prevPanier.map((item) =>
-//           item.id === plant.id && item.taille === taille
-//             ? { ...item, quantite: item.quantite + 1 }
-//             : item
-//         );
-//       } else {
-//         return [...prevPanier, { ...plant, quantite: 1, taille, prix }];
-//       }
-//     });
-//   };
-
-//   if (loading) {
-//     return (
-//       <p className="text-center text-gray-500">Chargement des plantes...</p>
-//     );
-//   }
-
-//   if (error) {
-//     return <p className="text-center text-red-500">{error}</p>;
-//   }
-
-//   if (!isMounted) {
-//     return null;
-//   }
-
-//   return (
-//     <div className="container mx-auto p-15 bg-white">
-//       <h1
-//         className={`${cinzel.className} antialiased text-4xl font-semibold text-black p-8 text-center`}
-//       >
-//         Nos Plantes
-//       </h1>
-
-//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 p-8">
-//         {plants.map((plant) => (
-//           <div
-//             key={plant.id}
-//             className="shadow-xl shadow-black rounded-md p-4 bg-white"
-//           >
-//             <img
-//               src={plant.image}
-//               alt={plant.name}
-//               className="w-full h-48 object-cover rounded-md"
-//             />
-//             <h3 className="text-lg font-semibold mt-2 text-black">{plant.name}</h3>
-//             <p className="text-sm text-gray-600">
-//               🌿 Catégorie : {plant.category}
-//             </p>
-
-//             <div className="mt-2 text-black">
-//               <label className="inline-flex items-center">
-//                 <input
-//                   type="radio"
-//                   name={`taille-${plant.id}`}
-//                   value="Petite"
-//                   className="form-radio text-yellow-500"
-//                 />
-//                 <span className="ml-2">Petite - {plant.prices.Petite}€</span>
-//               </label>
-//               <label className="inline-flex items-center ml-4">
-//                 <input
-//                   type="radio"
-//                   name={`taille-${plant.id}`}
-//                   value="Grande"
-//                   className="form-radio text-blue-500"
-//                 />
-//                 <span className="ml-2">Grande - {plant.prices.Grande}€</span>
-//               </label>
-//             </div>
-
-//             <button
-//               onClick={() => {
-//                 const selectedSize = document.querySelector(
-//                   `input[name="taille-${plant.id}"]:checked`
-//                 );
-//                 if (selectedSize) {
-//                   ajouterAuPanier(plant, selectedSize.value);
-//                 } else {
-//                   alert("Veuillez sélectionner une taille.");
-//                 }
-//               }}
-//               className="bg-yellow-400 hover:bg-yellow-600 text-black px-6  rounded-full mt-3 w-full flex justify-center items-center py-2"
-//             >
-//               Découvrir
-//             </button>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// // }
-// "use client";
-// import { useEffect, useState } from "react";
-// import { useRouter } from "next/navigation";
-// import { cinzel } from "@/font";
-// import Searchbar from "../components/searchBar/SearchBar";
-
-// export default function Produits() {
-//   const [plants, setPlants] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const router = useRouter();
-
-//   useEffect(() => {
-//     fetch("https://ranarbr.github.io/apiPlants/data.json")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         if (data && data.plants) {
-//           setPlants(data.plants);
-//           setLoading(false);
-//         } else {
-//           throw new Error("Structure de données inattendue");
-//         }
-//       })
-//       .catch((error) => {
-//         console.error("Erreur de chargement :", error);
-//         setError("Problème de chargement des plantes. Veuillez réessayer.");
-//         setLoading(false);
-//       });
-//   }, []);
-
-//   if (loading) {
-//     return (
-//       <p className="text-center text-gray-500">Chargement des plantes...</p>
-//     );
-//   }
-
-//   if (error) {
-//     return <p className="text-center text-red-500">{error}</p>;
-//   }
-
-//   return (
-//     <div>
-//     <SearchBar search={setSearchTerm} />
-
-//     <div className="container mx-auto p-15 bg-white ">
-//       <h1
-//         className={`${cinzel.className} text-4xl font-semibold text-black p-8 text-center`}
-//       >
-//         Nos Plantes
-//       </h1>
-
-//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 p-8 ">
-//         {plants.map((plant) => (
-//           <div
-//             key={plant.id}
-//             className="shadow-xl shadow-black rounded-md p-4 bg-white"
-//           >
-//             <img
-//               src={plant.image}
-//               alt={plant.name}
-//               className="w-full h-48 object-cover rounded-md"
-//             />
-//             <h3 className="text-lg font-semibold mt-2 text-black">
-//               {plant.name}
-//             </h3>
-//             <p className="text-sm text-gray-600">
-//               🌿 Catégorie : {plant.category}
-//             </p>
-
-//             <button
-//               onClick={() => router.push(`/details?id=${plant.id}`)}
-//               className="bg-yellow-400 hover:bg-yellow-600 text-black px-6 rounded-full mt-3 w-full flex justify-center items-center py-2
-//               mb-5"
-//             >
-//               Découvrir
-//             </button>
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//     </div>
-//   );
-// }
-
-
-
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -231,6 +9,8 @@ export default function Produits() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [priceSort, setPriceSort] = useState(""); // pour trier par prix
+  const [categoryFilter, setCategoryFilter] = useState(""); // pour filtrer par catégorie
   const router = useRouter();
 
   useEffect(() => {
@@ -254,9 +34,19 @@ export default function Produits() {
   if (loading) return <p className="text-center text-gray-500">Chargement des plantes...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
-  const filteredPlants = plants.filter((plant) =>
-    plant.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Filtrer les plantes par nom
+  const filteredPlants = plants
+    .filter((plant) => plant.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    .filter((plant) => (categoryFilter ? plant.category.toLowerCase().includes(categoryFilter.toLowerCase()) : true));
+
+  const sortedPlants = filteredPlants.sort((a, b) => {
+    if (priceSort === "asc") {
+      return a.prices.Petite - b.prices.Petite;
+    } else if (priceSort === "desc") {
+      return b.prices.Petite - a.prices.Petite;
+    }
+    return 0;
+  });
 
   return (
     <div>
@@ -264,17 +54,47 @@ export default function Produits() {
         <h1 className={`${cinzel.className} text-4xl font-semibold text-black p-8 text-center`}>
           Nos Plantes
         </h1>
-
         <Searchbar search={setSearchTerm} />
 
 
+        <div className="flex justify-end items-center p-5">
+
+          <div className="flex gap-4">
+            <select
+              value={priceSort}
+              onChange={(e) => setPriceSort(e.target.value)}
+              className="border-2 border-gray-300  focus:border-yellow-400 
+                 focus:ring-yellow-300 p-2 rounded-md "
+            >
+              <option value="">Trier par prix</option>
+              <option value="asc">Prix croissant</option>
+              <option value="desc">Prix décroissant</option>
+            </select>
+
+            <select
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
+              className="border-2 border-gray-300  focus:border-yellow-400 
+                 focus:ring-yellow-300 p-2 rounded-md"
+            >
+              <option value="">Filtrer par catégorie</option>
+              <option value="plante d'intérieur">Plante d'intérieur</option>
+              <option value="plante d'extérieur">Plante d'extérieur</option>
+              <option value="cactus">Cactus</option>
+              <option value="succulente">Succulente</option>
+            </select>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 p-8">
-          {filteredPlants.length > 0 ? (
-            filteredPlants.map((plant) => (
-              <div key={plant.id} className="shadow-xl shadow-black rounded-md p-4 bg-white">
+          {sortedPlants.length > 0 ? (
+            sortedPlants.map((plant) => (
+              <div key={plant.id} className="shadow-xl shadow-black rounded-md bg-white p-5">
                 <img src={plant.image} alt={plant.name} className="w-full h-48 object-cover rounded-md" />
                 <h3 className="text-lg font-semibold mt-2 text-black">{plant.name}</h3>
                 <p className="text-sm text-gray-600">🌿 Catégorie : {plant.category}</p>
+                <p className="text-black">🌱 Petite : {plant.prices.Petite}€</p>
+                <p className="text-black">🌳 Grande : {plant.prices.Grande}€</p>
 
                 <button
                   onClick={() => router.push(`/details/${plant.id}`)}
