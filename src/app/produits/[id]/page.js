@@ -4,7 +4,6 @@ import { useParams, useRouter } from "next/navigation";
 import { enriquita } from "@/font";
 import { CiDiscount1 } from "react-icons/ci";
 
-
 export default function Details() {
   const { id } = useParams();
   const router = useRouter();
@@ -49,15 +48,20 @@ export default function Details() {
       ...plant,
       size: selectedSize,
       prix: plant.prices[selectedSize],
+      image: plant.image,   
+      name: plant.name,   
     };
+
+    const currentCart = JSON.parse(localStorage.getItem("panier")) || [];
+    currentCart.push(plantToAdd);
+    localStorage.setItem("panier", JSON.stringify(currentCart));
+
     console.log("Plante ajoutée au panier : ", plantToAdd);
   };
 
   return (
     <div className="container mx-auto p-6 bg-white">
-      <h2
-        className={`${enriquita.className} antialiased w-full flex items-center font-semibold p-5 text-black text-4xl`}
-      >
+      <h2 className={`${enriquita.className} antialiased w-full flex items-center font-semibold p-5 text-black text-4xl`}>
         {plant.name}
       </h2>
 
@@ -69,32 +73,22 @@ export default function Details() {
             className="w-full h-[400px] rounded-lg object-cover"
           />
           <div className="mt-6 text-gray-700 w-full">
-            <p>
-              <strong>Description :</strong> {plant.description}
-            </p>
+            <p><strong>Description :</strong> {plant.description}</p>
           </div>
         </div>
 
-   
-
         <div className="w-full lg:w-1/2 flex flex-col justify-between">
-        <div className="bg-red-100 h-[100px] w-[520px] rounded-sm p-3">
-        <p className="flex items-center gap-2 text-black font-bold mt-3 ">
-        <CiDiscount1 className="text-3xl mt-2"/>
-        Produit expédié par Green Store 🌱 <br/>
-        Achetez 2 plantes et bénéficiez de 15% de réduction !
-        </p>
-        </div>
+          <div className="bg-red-100 h-[100px] w-[520px] rounded-sm p-3">
+            <p className="flex items-center gap-2 text-black font-bold mt-3 ">
+              <CiDiscount1 className="text-3xl mt-2" />
+              Produit expédié par Green Store 🌱 <br />
+              Achetez 2 plantes et bénéficiez de 15% de réduction !
+            </p>
+          </div>
           <div className="text-gray-700 w-full">
-            <p>
-              <strong>Catégorie :</strong> {plant.category}
-            </p>
-            <p>
-              <strong>Entretien :</strong> {plant.maintenance}
-            </p>
-            <p>
-              <strong>Luminosité :</strong> {plant.light}
-            </p>
+            <p><strong>Catégorie :</strong> {plant.category}</p>
+            <p><strong>Entretien :</strong> {plant.maintenance}</p>
+            <p><strong>Luminosité :</strong> {plant.light}</p>
           </div>
           <div className="mt-4 text-black">
             <div className="flex flex-col items-start mt-2">
@@ -124,14 +118,14 @@ export default function Details() {
           <div className="flex flex-col gap-5 items-start pt-5">
             <button
               onClick={handleAddToCart}
-              className="bg-yellow-400 hover:bg-yellow-600 text-black px-6 py-2 rounded-full w-[180px]"
+              className="bg-yellow-400 hover:bg-yellow-600 text-black px-6 py-2 rounded-full w-[180px] h-[40px] font-semibold cursor-pointer "
             >
               Adopter la plante
             </button>
 
             <button
               onClick={() => router.back()}
-              className="bg-yellow-400 hover:bg-yellow-600 text-black px-6 py-2 rounded-full w-auto"
+              className="bg-yellow-400 hover:bg-yellow-600 text-black px-6 py-2 rounded-full w-[120px] cursor-pointer"
             >
               Retour
             </button>
@@ -141,3 +135,4 @@ export default function Details() {
     </div>
   );
 }
+

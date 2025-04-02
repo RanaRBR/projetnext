@@ -128,7 +128,7 @@ export default function Produits() {
 
                 <Link href={`/produits/${plant.id}`}>
                   <button
-                    className="bg-yellow-400 hover:bg-yellow-600 text-black px-6 rounded-full mt-3 w-full flex justify-center items-center py-2 mb-5"
+                    className="bg-yellow-400 hover:bg-yellow-600 text-black px-6 rounded-full mt-3 w-full flex justify-center items-center py-2 mb-5 cursor-pointer"
                   >
                     Découvrir
                   </button>
