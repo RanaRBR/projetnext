@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
     <footer
-      className={` car w-full flex items-center justify-between px-10 py-4 ${
+      className={` car w-full flex items-center justify-between px-10 py-4 font-semibold  ${
         isDarkMode ? "bg-black text-white" : "bg-white text-black"
       }`}
     >

@@ -16,9 +16,9 @@ const Navbar = ({ panier = [], setPanier }) => {
   };
 
   return (
-    <nav className="car flex items-center">
+    <nav className="car flex items-center font-semibold">
       <div
-        className={`${enriquita.className} antialiased  w-full flex items-center shadow-2xl shadow-black px-8`}
+        className={`${enriquita.className} antialiased  w-full flex items-center shadow-2xl shadow-black px-8 `}
       >
         <div className="flex-shrink-0">
           <Link href="/">
