@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { cinzel } from "@/font";
 import Searchbar from "../components/searchBar/SearchBar";
 import { TiArrowSortedDown } from "react-icons/ti";
+import Link from "next/link";
 
 export default function Produits() {
   const [plants, setPlants] = useState([]);
@@ -32,12 +33,19 @@ export default function Produits() {
       });
   }, []);
 
-  if (loading) return <p className="text-center text-gray-500">Chargement...</p>;
+  if (loading)
+    return <p className="text-center text-gray-500">Chargement...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
 
   const filteredPlants = plants
-    .filter((plant) => plant.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    .filter((plant) => (categoryFilter ? plant.category.toLowerCase().includes(categoryFilter.toLowerCase()) : true));
+    .filter((plant) =>
+      plant.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter((plant) =>
+      categoryFilter
+        ? plant.category.toLowerCase().includes(categoryFilter.toLowerCase())
+        : true
+    );
 
   const sortedPlants = filteredPlants.sort((a, b) => {
     if (priceSort === "asc") {
@@ -51,7 +59,11 @@ export default function Produits() {
   return (
     <div>
       <div className="container mx-auto p-15 bg-white">
-        <h1 className={`${cinzel.className} text-4xl font-semibold text-black p-8 text-center`}>Nos Plantes</h1>
+        <h1
+          className={`${cinzel.className} text-4xl font-semibold text-black p-8 text-center`}
+        >
+          Nos Plantes
+        </h1>
 
         <Searchbar search={setSearchTerm} />
 
@@ -96,23 +108,37 @@ export default function Produits() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 p-8">
           {sortedPlants.length > 0 ? (
             sortedPlants.map((plant) => (
-              <div key={plant.id} className="shadow-xl shadow-black rounded-md bg-white p-5">
-                <img src={plant.image} alt={plant.name} className="w-full h-48 object-cover rounded-md" />
-                <h3 className="text-lg font-semibold mt-2 text-black">{plant.name}</h3>
-                <p className="text-sm text-gray-600">🌿 Catégorie : {plant.category}</p>
+              <div
+                key={plant.id}
+                className="shadow-xl shadow-black rounded-md bg-white p-5"
+              >
+                <img
+                  src={plant.image}
+                  alt={plant.name}
+                  className="w-full h-48 object-cover rounded-md"
+                />
+                <h3 className="text-lg font-semibold mt-2 text-black">
+                  {plant.name}
+                </h3>
+                <p className="text-sm text-gray-600">
+                  🌿 Catégorie : {plant.category}
+                </p>
                 <p className="text-black">🌱 Petite : {plant.prices.Petite}€</p>
                 <p className="text-black">🌳 Grande : {plant.prices.Grande}€</p>
 
-                <button
-                  onClick={() => router.push(`/details/${plant.id}`)}
-                  className="bg-yellow-400 hover:bg-yellow-600 text-black px-6 rounded-full mt-3 w-full flex justify-center items-center py-2 mb-5"
-                >
-                  Découvrir
-                </button>
+                <Link href={`/produits/${plant.id}`}>
+                  <button
+                    className="bg-yellow-400 hover:bg-yellow-600 text-black px-6 rounded-full mt-3 w-full flex justify-center items-center py-2 mb-5"
+                  >
+                    Découvrir
+                  </button>
+                </Link>
               </div>
             ))
           ) : (
-            <p className="text-center text-gray-500 col-span-full">Aucune plante trouvée.</p>
+            <p className="text-center text-gray-500 col-span-full">
+              Aucune plante trouvée.
+            </p>
           )}
         </div>
       </div>

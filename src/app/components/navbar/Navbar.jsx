@@ -16,7 +16,7 @@ const Navbar = ({ panier = [], setPanier }) => {
   };
 
   return (
-    <nav className="car flex items-center ">
+    <nav className="car flex items-center">
       <div
         className={`${enriquita.className} antialiased  w-full flex items-center shadow-2xl shadow-black px-8`}
       >
@@ -56,14 +56,15 @@ const Navbar = ({ panier = [], setPanier }) => {
           </ul>
         </div>
         <div className="flex items-center px-3">
-          <button
+          {/* <button
             onClick={togglePanier}
             className="text-black hover:text-yellow-600 flex items-center px-4 py-2 text-xl"
           >
             <FaCartShopping className="mr-2" />
              ({panier.length})
-          </button>
+          </button> */}
         </div>
+        <Panier/>
         <DarkMode />
       </div>
       {panierVisible && <Panier panier={panier} setPanier={setPanier} />}

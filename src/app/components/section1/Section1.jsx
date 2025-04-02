@@ -5,6 +5,7 @@ import { IoPricetagsOutline } from "react-icons/io5";
 import { serif } from "@/font";
 import { RiPlantLine } from "react-icons/ri";
 import "./Section1.sass";
+import Link from "next/link";
 
 function Section1() {
   const [data, setData] = useState([]);
@@ -85,6 +86,15 @@ function Section1() {
                   <span className="text-gray-500">Prix non disponible</span>
                 )}
               </p>
+
+              <Link href={`/produits/${item.id}`}>
+                  <button
+                    className="bg-yellow-400 hover:bg-yellow-600 text-black px-6 rounded-full mt-3 w-full flex justify-center items-center py-2 mb-5"
+                  >
+                    En savoir plus
+                  </button>
+                </Link>
+
             </div>
           ))}
         </div>
