@@ -1,3 +1,300 @@
+// .car
+//     background-color: rgb(174, 182, 169)
+
+// //menu Burger
+
+
+// @media (max-width: 1024px)
+//     .navbar-links
+//         display: none
+//         position: absolute
+//         top: 100%
+//         left: 0
+//         width: 100%
+//         background: white
+//         flex-direction: column
+//         text-align: center
+//         padding: 20px
+//         box-shadow: 0px 5px 10px rgba(216, 182, 44, 0.1)
+//         background-color: rgb(255, 223, 32)
+
+//     .navbar-links.open
+//         display: flex
+
+// .navbar-links li
+//     font-size: 1rem
+
+// .burger
+//     display: none
+//     position: relative
+//     width: 40px
+//     height: 30px
+//     cursor: pointer
+//     z-index: 100
+//     background: none
+//     border: none
+
+//     @media (max-width: 1024px)
+//         display: block
+
+
+// .burger .bar, .burger .bar::before, .burger .bar::after
+//     content: ""
+//     position: absolute
+//     width: 35px
+//     height: 4px
+//     background: black
+//     border-radius: 3px
+//     transition: all 0.3s ease-in-out
+//     right: 0
+
+// .burger .bar
+//     top: 50%
+//     transform: translateY(-50%)
+//     right: -80px
+
+// .burger .bar::before
+//     top: -10px
+//     right: -0px
+
+// .burger .bar::after
+//     top: 10px
+//     right: -0px
+
+// .burger.open .bar
+//     background: transparent
+
+// .burger.open .bar::before
+//     transform: rotate(45deg)
+//     top: 0
+
+// .burger.open .bar::after
+//     transform: rotate(-45deg)
+//     top: 0
+
+// .navbar-links
+//     display: flex
+//     height: 60px
+//     font-size: 0.8rem !important
+//     list-style: none
+//     flex-direction: column
+//     position: absolute
+//     top: 100%
+//     left: 0
+//     width: 100%
+//     background: rgb(255, 223, 32)
+//     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1)
+//     transform: translateX(120%)
+//     visibility: hidden
+//     transition: all 2s ease-out
+
+// .navbar-links.open
+//     transform: translateX(0)
+//     visibility: visible
+
+// .navbar-links li
+//     opacity: 0
+//     transform: translateY(-20px) 
+//     transition: opacity 0.8s ease, transform 0.8s ease
+
+// .navbar-links.open li
+//     opacity: 1
+//     transform: translateY(0) 
+
+// .navbar-links.open li:nth-child(1)
+//     transition-delay: 0.3s
+
+// .navbar-links.open li:nth-child(2)
+//     transition-delay: 0.4s
+
+// .navbar-links.open li:nth-child(3)
+//     transition-delay: 0.5s
+
+// .navbar-links.open li:nth-child(4)
+//     transition-delay: 0.6s
+
 .car
-    background-color: rgb(174, 182, 169)
+  background-color: rgb(174, 182, 169)
+
+@media (max-width: 1024px)
+  .navbar-links
+    display: none
+    position: absolute
+    top: 100%
+    left: 0
+    width: 100%
+    background: rgb(255, 223, 32)
+    flex-direction: column
+    text-align: center
+    padding: 20px
+    box-shadow: 0px 5px 10px rgba(216, 182, 44, 0.1)
+    transform: translateX(120%) /* Initial state, off-screen */
+    visibility: hidden /* Start hidden */
+    transition: all 0.5s ease-out /* Shorter transition time for smoother animation */
+
+  .navbar-links.open
+    display: flex
+    transform: translateX(0) /* Bring it back on screen */
+    visibility: visible /* Make it visible */
+
+  .navbar-links li
+    font-size: 1rem
+    opacity: 0
+    transform: translateY(-20px)
+    transition: opacity 0.5s ease, transform 0.5s ease
+
+  .navbar-links.open li
+    opacity: 1
+    transform: translateY(0)
+
+  .navbar-links.open li:nth-child(1)
+    transition-delay: 0.2s /* Faster delay for smoother entrance */
+
+  .navbar-links.open li:nth-child(2)
+    transition-delay: 0.3s
+
+  .navbar-links.open li:nth-child(3)
+    transition-delay: 0.4s
+
+  .navbar-links.open li:nth-child(4)
+    transition-delay: 0.5s
+
+.burger
+  display: none
+  position: relative
+  width: 40px
+  height: 30px
+  cursor: pointer
+  z-index: 100
+  background: none
+  border: none
+
+  @media (max-width: 1024px)
+    display: block
+
+.burger .bar, .burger .bar::before, .burger .bar::after
+  content: ""
+  position: absolute
+  width: 35px
+  height: 4px
+  background: black
+  border-radius: 3px
+  transition: all 0.3s ease-in-out
+
+.burger .bar
+  top: 50%
+  transform: translateY(-50%)
+  right: 0
+
+.burger .bar::before
+  top: -10px
+  right: 0
+
+.burger .bar::after
+  top: 10px
+  right: 0
+
+.burger.open .bar
+  background: transparent
+
+.burger.open .bar::before
+  transform: rotate(45deg)
+  top: 0
+
+.burger.open .bar::after
+  transform: rotate(-45deg)
+  top: 0
+
+.car
+  background-color: rgb(174, 182, 169)
+
+// @media (max-width: 1024px)
+//   .navbar-links
+//     display: none
+//     position: absolute
+//     top: 100%
+//     left: 0
+//     width: 100%
+//     background: rgb(255, 223, 32)
+//     flex-direction: column
+//     text-align: center
+//     padding: 20px
+//     box-shadow: 0px 5px 10px rgba(216, 182, 44, 0.1)
+//     transform: translateX(120%) /* Initial state, off-screen */
+//     visibility: hidden /* Start hidden */
+//     transition: all 0.5s ease-out /* Shorter transition time for smoother animation */
+
+//   .navbar-links.open
+//     display: flex
+//     transform: translateX(0) /* Bring it back on screen */
+//     visibility: visible /* Make it visible */
+
+//   .navbar-links li
+//     font-size: 1rem
+//     opacity: 0
+//     transform: translateY(-20px)
+//     transition: opacity 0.5s ease, transform 0.5s ease
+
+//   .navbar-links.open li
+//     opacity: 1
+//     transform: translateY(0)
+
+//   .navbar-links.open li:nth-child(1)
+//     transition-delay: 0.2s /* Faster delay for smoother entrance */
+
+//   .navbar-links.open li:nth-child(2)
+//     transition-delay: 0.3s
+
+//   .navbar-links.open li:nth-child(3)
+//     transition-delay: 0.4s
+
+//   .navbar-links.open li:nth-child(4)
+//     transition-delay: 0.5s
+
+// .burger
+//   display: none
+//   position: relative
+//   width: 40px
+//   height: 30px
+//   cursor: pointer
+//   z-index: 100
+//   background: none
+//   border: none
+
+//   @media (max-width: 1024px)
+//     display: block /* Show the burger icon on small screens */
+
+// .burger .bar, .burger .bar::before, .burger .bar::after
+//   content: ""
+//   position: absolute
+//   width: 35px
+//   height: 4px
+//   background: black
+//   border-radius: 3px
+//   transition: all 0.3s ease-in-out
+
+// .burger .bar
+//   top: 50%
+//   transform: translateY(-50%)
+//   right: 0
+
+// .burger .bar::before
+//   top: -10px
+//   right: 0
+
+// .burger .bar::after
+//   top: 10px
+//   right: 0
+
+// .burger.open .bar
+//   background: transparent
+
+// .burger.open .bar::before
+//   transform: rotate(45deg)
+//   top: 0
+
+// .burger.open .bar::after
+//   transform: rotate(-45deg)
+//   top: 0
+
 
