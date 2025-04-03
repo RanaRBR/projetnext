@@ -5,6 +5,7 @@ import Carousel from "./components/carousel/Carousel";
 import { cinzel } from "@/font";
 import Section1 from "./components/section1/Section1";
 import Section2 from "./components/section2/Section2";
+import ElementReassurance from "./components/elementReassurance/ElementReassurance";
 
 const Home = () => {
   const [plants, setPlants] = useState([]);
@@ -22,7 +23,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen dark:bg-white text-black">
+    <div className="flex flex-col items-center justify-center min-h-screen dark:bg-white text-black padNav">
       <div className="flex flex-col items-center justify-center min-h-screen">
         <h1
           className={`${cinzel.className} antialiased text-4xl font-semibold text-black mt-20 mb-10`}
@@ -31,6 +32,7 @@ const Home = () => {
         </h1>
         <Carousel plants={plants} />
       </div>
+      <ElementReassurance/>
       <Section1 />
       <Section2 />
     </div>

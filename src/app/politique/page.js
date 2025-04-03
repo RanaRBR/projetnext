@@ -3,7 +3,7 @@ import { serif } from "@/font";
 
 const Politique = () => {
   return (
-    <div className="container mx-auto p-6 bg-white text-black flex flex-col items-center justify-center">
+    <div className="container mx-auto p-6 bg-white text-black flex flex-col items-center justify-center padNav">
       <h1 className={`${cinzel.className} antialiased text-4xl font-semibold text-black p-8 text-center`}>
         Politique de confidentialité
       </h1>

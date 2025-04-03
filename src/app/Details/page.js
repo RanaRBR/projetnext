@@ -1,15 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function Details() {
-    
+const Details = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
+  const { id } = router.query; // Récupération de l'ID de la plante depuis l'URL
   const [plant, setPlant] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(""); 
 
   useEffect(() => {
     if (!id) return;
@@ -21,10 +20,9 @@ export default function Details() {
         if (selectedPlant) {
           setPlant(selectedPlant);
         } else {
-          setError("Plante non trouvée");
+          setError("Plante non trouvée.");
         }
         setLoading(false);
-        
       })
       .catch((error) => {
         console.error("Erreur :", error);
@@ -33,35 +31,56 @@ export default function Details() {
       });
   }, [id]);
 
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      alert("Veuillez sélectionner une taille.");
+      return;
+    }
+    const plantToAdd = {
+      id: plant.id,
+      name: plant.name,
+      size: selectedSize,
+      prix: plant.prices[selectedSize],
+      image: plant.image,
+    };
+
+    // Récupérer le panier existant dans localStorage
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+    panier.push(plantToAdd); 
+    localStorage.setItem("panier", JSON.stringify(panier)); // Sauvegarder le panier
+
+    alert("Plante ajoutée au panier !");
+  };
+
   if (loading) return <p className="text-center text-gray-500">Chargement...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
   if (!plant) return <p className="text-center text-gray-500">Plante non trouvée.</p>;
 
   return (
-    <div className="container mx-auto p-6 bg-white shadow-lg rounded-lg">
+    <div className="container mx-auto p-6 bg-white shadow-lg rounded-lg padNav">
       <h1 className="text-3xl font-bold text-center text-green-700">{plant.name}</h1>
-      <img
-        src={plant.image}
-        alt={plant.name}
-        className="w-full h-80 object-cover rounded-lg mt-4"
-      />
-      <div className="mt-6 text-gray-700">
-        <p><strong>Description :</strong> {plant.description}</p>
-        <p><strong>Catégorie :</strong> {plant.category}</p>
-        <p><strong>Entretien :</strong> {plant.maintenance}</p>
-        <p><strong>Lumière :</strong> {plant.light}</p>
-      </div>
-      <div className="mt-4 text-black">
-        <h2 className="text-xl font-semibold">Prix :</h2>
-        <p>🌱 Petite : {plant.prices.Petite}€</p>
-        <p>🌳 Grande : {plant.prices.Grande}€</p>
+      <img src={plant.image} alt={plant.name} className="w-full h-80 object-cover rounded-lg mt-4" />
+      <div className="mt-4">
+        <label className="block mb-2">Choisissez une taille :</label>
+        <select
+          value={selectedSize}
+          onChange={(e) => setSelectedSize(e.target.value)}
+          className="border rounded p-2"
+        >
+          <option value="">Sélectionnez une taille</option>
+          <option value="Petite">Petite</option>
+          <option value="Grande">Grande</option>
+        </select>
       </div>
       <button
-        onClick={() => router.back()}
-        className="bg-gray-600 hover:bg-gray-800 text-white px-6 py-2 rounded-lg mt-4"
+        onClick={handleAddToCart}
+        className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg mt-4"
       >
-        Retour
+        Ajouter au panier
       </button>
     </div>
   );
-}
+};
+
+export default Details;
+

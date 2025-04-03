@@ -1,3 +1,7 @@
 @import "tailwindcss";
 
 
+.padNav {
+    padding-top: 150px;
+
+}

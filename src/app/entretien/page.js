@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Entretien = () => {
   return (
-    <div className="container mx-auto bg-white text-black p-20">
+    <div className="container mx-auto bg-white text-black p-20 padNav">
       <h1
         className={`${cinzel.className} antialiased text-4xl font-semibold text-black mt-20`}
       >

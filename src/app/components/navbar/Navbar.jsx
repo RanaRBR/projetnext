@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaCartShopping } from "react-icons/fa6";
@@ -9,15 +9,25 @@ import "./Navbar.sass";
 
 const Navbar = () => {
   const [panier, setPanier] = useState([]);
-  const [panierVisible, setPanierVisible] = useState(false);
   const router = useRouter();
 
-  const togglePanier = () => {
-    setPanierVisible(!panierVisible);
-  };
+  // Charger et surveiller les modifications du panier dans localStorage
+  useEffect(() => {
+    const updatePanier = () => {
+      const savedCart = JSON.parse(localStorage.getItem("panier")) || [];
+      setPanier(savedCart);
+    };
+
+    // Charger les données initiales
+    updatePanier();
+
+    // Écoute les changements sur localStorage
+    window.addEventListener("storage", updatePanier);
+    return () => window.removeEventListener("storage", updatePanier);
+  }, []);
 
   return (
-    <nav className="car flex items-center font-semibold">
+    <nav className="car flex items-center font-semibold fixed top-0 left-0 w-full z-50 ">
       <div className={`${enriquita.className} antialiased w-full flex items-center shadow-2xl shadow-black px-8`}>
         <div className="flex-shrink-0">
           <Link href="/">
@@ -34,18 +44,21 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className="flex items-center px-3">
+        <div className="flex items-center px-3 relative">
           <button
             onClick={() => router.push("/panier")}
-            className="text-black hover:text-yellow-600 flex items-center px-4 py-2 text-xl cursor-pointer"
+            className="text-black hover:text-yellow-600 flex items-center px-4 py-2 text-xl cursor-pointer relative"
           >
-            <FaCartShopping className="mr-2 " />
-            ({panier.length})
+            <FaCartShopping className="mr-2 text-2xl" />
+            
+            {panier.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                {panier.length}
+              </span>
+            )}
           </button>
         </div>
       </div>
-
-      {panierVisible && <Panier panier={panier} setPanier={setPanier} />}
     </nav>
   );
 };
