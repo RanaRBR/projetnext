@@ -90,13 +90,13 @@ const Carousel = () => {
         onClick={prevElement}
         className="absolute left-42 top-1/2 transform -translate-y-1/1 bg-yellow-400 text-white rounded-lg transition duration-300 ease-in-out hover:scale-105 hover:bg-yellow-600 hover:shadow-lg  px-3 py-3  "
       >
-        <FaChevronLeft className="text-2xl" />
+        <FaChevronLeft className="text-2xl text-black" />
       </button>
       <button
         onClick={nextElement}
         className="absolute right-42 top-1/2 transform -translate-y-1/1 bg-yellow-400 text-white rounded-lg transition duration-300 ease-in-out hover:scale-105 hover:bg-yellow-600 hover:shadow-lg  px-3 py-3 "
       >
-        <FaChevronRight className="text-2xl" />
+        <FaChevronRight className="text-2xl text-black" />
       </button>
     </div>
   );

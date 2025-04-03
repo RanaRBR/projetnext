@@ -18,11 +18,11 @@ export default function RootLayout({ children }) {
     // <StoreProvider>
     <html lang="fr" suppressHydrationWarning={true}>
       <body className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300"  cz-shortcut-listen="true" > 
-        <ThemeProvider> 
+        {/* <ThemeProvider>  */}
           <Navbar />
           <main>{children}</main>
           <Footer />
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
     // </StoreProvider>

@@ -5,16 +5,17 @@ import { FaFacebook } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { SiPinterest } from "react-icons/si";
 import { enriquita } from "@/font";
-import { useTheme } from "@/context/ThemeContext";
+// import { useTheme } from "@/context/ThemeContext";
 import "./Footer.sass";
+import DarkMode from "../darkmode/Darkmode";
 
 const Footer = () => {
-  const { isDarkMode } = useTheme();
+  // const { isDarkMode } = useTheme();
 
   return (
     <footer
-      className={` car w-full flex items-center justify-between px-10 py-4 font-semibold  ${
-        isDarkMode ? "bg-black text-white" : "bg-white text-black"
+      className={` car w-full flex items-center justify-between px-10 py-4 font-semibold mt-auto ${
+      DarkMode ? "bg-black text-white" : "bg-white text-black"
       }`}
     >
       <div className="flex space-x-5 text-xl text-black">
@@ -58,8 +59,8 @@ const Footer = () => {
         <Image
           src="/assets/images/logo2.png"
           alt="Logo"
-          width={150}
-          height={150}
+          width={120}
+          height={120}
         />
       </Link>
     </footer>
@@ -67,3 +68,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
