@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     // <StoreProvider>
     <html lang="fr" suppressHydrationWarning={true}>
-      <body className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300"  cz-shortcut-listen="true" > 
+      <body className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300 "  cz-shortcut-listen="true" > 
         {/* <ThemeProvider>  */}
           <Navbar />
           <main>{children}</main>

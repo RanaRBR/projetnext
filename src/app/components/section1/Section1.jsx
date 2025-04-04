@@ -42,7 +42,7 @@ function Section1() {
 
   return (
     <div className="flex flex-col items-center justify-center mt-15">
-      <h1 className={`${cinzel.className} antialiased text-4xl font-semibold text-black p-8`}>
+      <h1 className={`${cinzel.className} antialiased text-4xl font-semibold text-black p-8 lg:text-center`}>
         Les favoris de nos clients
       </h1>
 
@@ -51,9 +51,9 @@ function Section1() {
       ) : error ? (
         <p className="text-lg font-semibold text-red-500">Erreur : {error}</p>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6 md:px-10 pb-10">
           {data.slice(9, 13).map((item) => (
-            <div key={item.id} className="relative rounded-2xl p-4 bg-white shadow-md">
+            <div key={item.id} className="allR relative rounded-2xl p-4 bg-white shadow-md">
               <div className="absolute top-4 left-4 flex items-center gap-1 bg-[rgb(174,182,169)] p-1 rounded-sm shadow-md">
                 <IoPricetagsOutline className="text-white text-lg" />
                 <p className="text-white text-sm font-semibold">Promo</p>

@@ -23,8 +23,8 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen dark:bg-white text-black padNav">
-      <div className="flex flex-col items-center justify-center min-h-screen">
+    <div className="flex flex-col items-center justify-center min-h-screen w-full dark:bg-white text-black padNav">
+      <div className="flex flex-col items-center justify-center min-h-screen w-full">
         <h1
           className={`${cinzel.className} antialiased text-4xl font-semibold text-black mt-20 mb-10`}
         >

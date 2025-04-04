@@ -78,7 +78,7 @@ export default function Produits() {
            rounded-sm shadow-sm text-gray-700 placeholder-gray-400 
            appearance-none outline-none"
               >
-                <option value="">Prix</option>
+                <option value="">Par prix</option>
                 <option value="asc">Prix croissant</option>
                 <option value="desc">Prix décroissant</option>
               </select>
@@ -94,7 +94,7 @@ export default function Produits() {
            rounded-sm shadow-sm text-gray-700 placeholder-gray-400 
            appearance-none outline-none"
               >
-                <option value="">Catégorie</option>
+                <option value="">Par catégorie</option>
                 <option value="plante d'intérieur">Plante d'intérieur</option>
                 <option value="plante d'extérieur">Plante d'extérieur</option>
                 <option value="cactus">Cactus</option>
