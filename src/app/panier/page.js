@@ -41,7 +41,7 @@ const Panier = () => {
   };
 
   return (
-    <div className="container mx-auto p-6 bg-white shadow-lg rounded-lg padNav flex-col flex-grow h-screen">
+    <div className=" mx-auto p-6 bg-white shadow-lg rounded-lg padNav flex-col flex-grow h-screen w-full">
       <h1
              className={`${cinzel.className} text-4xl font-semibold text-black p-8 text-center`}
            >

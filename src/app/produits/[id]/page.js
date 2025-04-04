@@ -60,7 +60,7 @@ export default function Details() {
   };
 
   return (
-    <div className="container mx-auto p-6 bg-white">
+    <div className="container mx-auto p-6 bg-white padNav">
       <h2 className={`${enriquita.className} antialiased w-full flex items-center font-semibold p-5 text-black text-4xl`}>
         {plant.name}
       </h2>

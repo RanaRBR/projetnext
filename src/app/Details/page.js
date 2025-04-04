@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { cinzel } from "@/font";
 
 const Details = () => {
   const router = useRouter();
@@ -8,7 +9,7 @@ const Details = () => {
   const [plant, setPlant] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedSize, setSelectedSize] = useState(""); 
+  const [selectedSize, setSelectedSize] = useState("");
 
   useEffect(() => {
     if (!id) return;
@@ -46,20 +47,30 @@ const Details = () => {
 
     // Récupérer le panier existant dans localStorage
     const panier = JSON.parse(localStorage.getItem("panier")) || [];
-    panier.push(plantToAdd); 
+    panier.push(plantToAdd);
     localStorage.setItem("panier", JSON.stringify(panier)); // Sauvegarder le panier
 
     alert("Plante ajoutée au panier !");
   };
 
-  if (loading) return <p className="text-center text-gray-500">Chargement...</p>;
+  if (loading)
+    return <p className="text-center text-gray-500">Chargement...</p>;
   if (error) return <p className="text-center text-red-500">{error}</p>;
-  if (!plant) return <p className="text-center text-gray-500">Plante non trouvée.</p>;
+  if (!plant)
+    return <p className="text-center text-gray-500">Plante non trouvée.</p>;
 
   return (
-    <div className="container mx-auto p-6 bg-white shadow-lg rounded-lg padNav">
-      <h1 className="text-3xl font-bold text-center text-green-700">{plant.name}</h1>
-      <img src={plant.image} alt={plant.name} className="w-full h-80 object-cover rounded-lg mt-4" />
+    <div className="container mx-auto bg-white shadow-lg rounded-lg padNav">
+      <h1
+        className={`${cinzel.className} antialiased text-4xl font-semibold text-black mt-20`}
+      >
+        {plant.name}
+      </h1>
+      <img
+        src={plant.image}
+        alt={plant.name}
+        className="w-full h-80 object-cover rounded-lg mt-4"
+      />
       <div className="mt-4">
         <label className="block mb-2">Choisissez une taille :</label>
         <select
@@ -83,4 +94,3 @@ const Details = () => {
 };
 
 export default Details;
-
