@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Cinzel_Decorative, PT_Sans_Caption, Enriqueta } from 'next/font/google'
 
 export const cinzel = Cinzel_Decorative({subsets: ["latin"], weight: ['700']})

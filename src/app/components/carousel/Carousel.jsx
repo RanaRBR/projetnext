@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { ThemeProvider } from '../context/ThemeContext';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';

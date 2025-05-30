@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { cinzel } from "@/font";
 import { enriquita } from "@/font";
 import Image from "next/image";
