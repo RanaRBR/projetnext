@@ -3,7 +3,8 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import './globals.css';
 // import StoreProvider from './storeProvider';
-
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 export const metadata = {
   title: 'Green Store',
@@ -15,7 +16,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    // <StoreProvider>
+    // <Provider store={store}>
     <html lang="fr" suppressHydrationWarning={true}>
       <body className="bg-white text-black dark:bg-black dark:text-white transition-colors duration-300 "  cz-shortcut-listen="true" > 
         {/* <ThemeProvider>  */}
@@ -25,7 +26,7 @@ export default function RootLayout({ children }) {
         {/* </ThemeProvider> */}
       </body>
     </html>
-    // </StoreProvider>
+    // </Provider>
 
   );
 }

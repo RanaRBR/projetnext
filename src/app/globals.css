@@ -1,17 +1,12 @@
 @import "tailwindcss";
 
 
+
+
 .padNav {
     padding-top: 150px;
 
 }
-
-
-.padNav1 {
-  margin-top: 200px;
-
-}
-
 
 
 body {
@@ -19,12 +14,12 @@ body {
     color: black;
   }
   
-  body.dark {
+  /* body.dark {
     background-color: #121212; 
     color: white; 
-  }
+  } */
   
-/* 
+
   :root {
       --color-light: #ffffff;
       --color-dark: #595959;
@@ -39,4 +34,4 @@ body {
       background-color: var(--color-dark);
       color: white;
       transition: background-color 0.1s, color 0.1s;
-    } */
+    }

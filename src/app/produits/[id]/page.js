@@ -15,7 +15,7 @@ export default function Details() {
   useEffect(() => {
     if (!id) return;
 
-    fetch("https://ranarbr.github.io/apiPlants/data.json")
+    fetch("https://apiplants.netlify.app/data.json")
       .then((response) => response.json())
       .then((data) => {
         const selectedPlant = data.plants.find((p) => p.id == id);

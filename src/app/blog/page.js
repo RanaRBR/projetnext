@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Blog = () => {
   return (
-    <div className="container mx-auto bg-white text-black p-10">
+    <div className="container mx-auto bg-white text-black p-10 padNav">
       <h1
         className={`${cinzel.className} antialiased text-4xl font-semibold text-black mt-20 w-full text-center`}
       >

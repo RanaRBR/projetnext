@@ -75,11 +75,11 @@ const Carousel = () => {
             />
             <div className="text-center mt-4 text-black">
               <h2
-                className={`${serif.className} antialiased text-2xl font-semibold p-2`}
+                className={`${serif.className} antialiased text-2xl font-semibold`}
               >
                 {item.name}
               </h2>
-              <p className={`${serif.className} antialiased text-base mx-auto lg:p-2 p-10`}>
+              <p className={`${serif.className} antialiased text-base mx-auto lg:p-2 p-15`}>
                 {item.description}
               </p>
             </div>
